@@ -4,9 +4,10 @@ export const nickContext = createContext();
 
 export function NickProvider(props){
     const [nickname, setNickname] = useState("");
+    const [click, setClick] = useState(false)
 
     return (
-        <nickContext.Provider value={{nickname, setNickname}}>
+        <nickContext.Provider value={{nickname, setNickname, click, setClick}}>
             {props.children}
         </nickContext.Provider>
     )
