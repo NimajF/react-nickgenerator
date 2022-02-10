@@ -2,6 +2,7 @@ import { useContext } from "react";
 import axios from "axios";
 import { capitalize } from "./utils/Strings";
 import { nickContext } from "./contexts/nickContext";
+import "./Generator.css";
 
 export function Generator(){
     const { setNickname } = useContext(nickContext);
@@ -16,9 +17,9 @@ export function Generator(){
     }
 
     return (
-        <div>
-            <button onClick={generateNick} >Generate</button>
-            <button onClick={() => setNickname("") }>Reset</button>
+        <div className="div-btns" >
+            <button className="generate" onClick={generateNick} >Generate</button>
+            <button className="reset" onClick={() => setNickname("") }>Reset</button>
         </div>
     )
 }

@@ -1,0 +1,58 @@
+.div-btns{
+    margin-top: 2rem;
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.generate{
+    width: 150px;
+    padding: 1rem;
+    font-size: 1.5rem;
+    font-family: "Poppins";
+    border-radius: 5px;
+    border: none;
+    background: rgb(78, 140, 255);
+    color: white;
+    box-shadow: 0 7px 0 0 rgb(37, 99, 216);
+    transition: .1s ease-in-out;
+}
+.generate:hover{
+    background: rgb(43, 116, 250);
+}
+.generate:active{
+    transform: translateY(4px);
+    box-shadow: 0 2px 0 0 rgb(21, 82, 197);
+}
+
+.reset{
+    width: 150px;
+    padding: 1rem;
+    font-size: 1.5rem;
+    font-family: "Poppins";
+    border-radius: 5px;
+    border: none;
+    background: rgb(255, 63, 63);
+    box-shadow: 0 7px 0 0 rgb(246, 22, 22);
+    color: white;
+    transition: .3s ease-in-out;
+}
+.reset:hover{
+    background: rgb(248, 46, 46);
+    letter-spacing: 1px;
+}
+.reset:focus{
+    animation-name: reset-animation;
+    animation-duration: .3s;
+    animation-delay: 0.2s;
+}
+
+@keyframes reset-animation{
+    0% {transform: translateX(20px);}
+    25% {transform: translateX(-20px);}
+    50% {transform: translateX(10px);}
+    75% {transform: translateX(-10px);}
+    100% {transform: translateX(0px);}
+}
