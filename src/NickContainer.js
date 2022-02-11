@@ -2,12 +2,12 @@ import { useContext, useState } from "react";
 import { nickContext } from "./contexts/nickContext";
 import { Generator } from "./Generator";
 import "./NickContainer.css";
+import { randomMessage } from "./utils/Messages";
 
 export function NickContainer() {
-  const { nickname, setNickname, click, setClick } = useContext(nickContext);
+  const { nickname, setNickname, click, setClick, message } = useContext(nickContext);
   const [userText, setUserText] = useState("");
   const [copy, setCopy] = useState(false);
-  const [message, setMessage] = useState("");
 
   const provideText = () => {
     setNickname("");
@@ -22,7 +22,6 @@ export function NickContainer() {
   const copyToClipboard = () => {
     navigator.clipboard.writeText(nickname);
     setCopy(true);
-    setMessage(message);
     setTimeout(() => setCopy(false), 2000);
   };
 
