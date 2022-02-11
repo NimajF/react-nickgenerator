@@ -6,6 +6,8 @@ import "./NickContainer.css";
 export function NickContainer() {
   const { nickname, setNickname, click, setClick } = useContext(nickContext);
   const [userText, setUserText] = useState("");
+  const [copy, setCopy] = useState(false);
+  const [message, setMessage] = useState("");
 
   const provideText = () => {
     setNickname("");
@@ -17,9 +19,21 @@ export function NickContainer() {
     setUserText(evt.target.value);
   };
 
+  const copyToClipboard = () => {
+    navigator.clipboard.writeText(nickname);
+    setCopy(true);
+    setMessage(message);
+    setTimeout(() => setCopy(false), 2000);
+  };
+
   return (
     <div className="container">
       <div className="nick-container">
+        <div className={copy ? "overlay show" : "overlay"}>
+          <h2>COPIED</h2>
+          <span className="copied-nickname">{nickname}</span>
+          {click && copy ? <p className="message">{message}</p> : null}
+        </div>
         <div className="nickname-div">
           <span className="nickname" key={nickname}>
             {nickname}
@@ -31,6 +45,7 @@ export function NickContainer() {
           maxLength={10}
           onChange={handleChange}
           disabled={!click}
+          placeholder={"Write something..."}
           style={
             click
               ? {
@@ -49,7 +64,11 @@ export function NickContainer() {
           Provide
         </button>
         <Generator provideText={userText} open={click} />
-        <button className="copy-button" onClick={() => navigator.clipboard.writeText(nickname)}>
+        <button
+          className="copy-button"
+          onClick={copyToClipboard}
+          disabled={!nickname}
+        >
           Copy to Clipboard!
         </button>
       </div>
