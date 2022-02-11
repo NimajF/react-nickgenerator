@@ -17,6 +17,7 @@
     color: white;
     box-shadow: 0 7px 0 0 rgb(37, 99, 216);
     transition: .1s ease-in-out;
+    z-index: 1;
 }
 .generate:hover{
     background: rgb(43, 116, 250);
@@ -37,6 +38,7 @@
     box-shadow: 0 7px 0 0 rgb(246, 22, 22);
     color: white;
     transition: .3s ease-in-out;
+    z-index: 1;
 }
 .reset:hover{
     background: rgb(248, 46, 46);
@@ -45,7 +47,6 @@
 .reset:focus{
     animation-name: reset-animation;
     animation-duration: .3s;
-    animation-delay: 0.2s;
 }
 
 @keyframes reset-animation{
