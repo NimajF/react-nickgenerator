@@ -2,7 +2,6 @@ import { useContext, useState } from "react";
 import { nickContext } from "./contexts/nickContext";
 import { Generator } from "./Generator";
 import "./NickContainer.css";
-import { randomMessage } from "./utils/Messages";
 
 export function NickContainer() {
   const { nickname, setNickname, click, setClick, message } = useContext(nickContext);
@@ -35,7 +34,7 @@ export function NickContainer() {
         </div>
         <div className="nickname-div">
           <span className="nickname" key={nickname}>
-            {nickname}
+            {nickname ? nickname : "Your nickname will show here"}
           </span>
         </div>
         <input

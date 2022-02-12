@@ -56,3 +56,14 @@
     75% {transform: translateX(-10px);}
     100% {transform: translateX(0px);}
 }
+
+@media (max-width: 576px) { 
+    .generate{
+        width: 100px;
+        font-size: .9rem;
+    }
+    .reset{
+        width: 100px;
+        font-size: 1rem;
+    }
+}
