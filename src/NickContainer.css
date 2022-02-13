@@ -63,7 +63,7 @@
 }
 .nickname{
     animation: fade-text .1s ease-in forwards;
-    font-family: "Helvetica";
+    font-family: 'Rubik', sans-serif;
 }
 @keyframes fade-text{
     from {
@@ -84,7 +84,7 @@
     border: none;
     border-bottom: 2px solid rgb(129, 173, 255);
     outline: none;
-    font-family: "Consolas";
+    font-family: 'Rubik', sans-serif;
     font-size: 1.2rem;
     color: rgb(58, 58, 58);
     text-align: center;
