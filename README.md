@@ -1,4 +1,20 @@
-# Getting Started with Create React App
+# React Nickname Generator
+
+### A refactored version of an old project with `React.js`.
+<br>
+You can randomly generate nicknames for your favourite games/platforms.<br>
+Also you can provide some text and get a random nickname generated out of it.
+<br><br>
+
+You can visit the app [here](https://nimajf.github.io/react-nickgenerator/).
+
+### Preview
+![image](https://user-images.githubusercontent.com/89944815/153725574-be6507df-bd73-4448-b51a-9bfb61e484e2.png)
+![image](https://user-images.githubusercontent.com/89944815/153725620-d4b78341-bb24-4c87-a494-8bfe3cd0e42f.png)
+![image](https://user-images.githubusercontent.com/89944815/153725658-f01722bb-8964-407b-8910-c3cea755de6e.png)
+![image](https://user-images.githubusercontent.com/89944815/153725699-5c347f06-f1c5-40e3-bd4f-c14b725338c3.png)
+
+<br><br>
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
