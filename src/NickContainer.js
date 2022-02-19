@@ -15,7 +15,7 @@ export function NickContainer() {
   };
 
   const handleChange = (evt) => {
-    setUserText(evt.target.value);
+    setUserText(evt.target.value.replaceAll(" ", ""));
   };
 
   const copyToClipboard = () => {
@@ -41,6 +41,7 @@ export function NickContainer() {
           type="text"
           className="provide-text"
           maxLength={10}
+          minLength={1}
           onChange={handleChange}
           disabled={!click}
           placeholder={"Write something..."}
