@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/react-nickgenerator/static/css/main.ca5141ee.css",
-    "main.js": "/react-nickgenerator/static/js/main.7ea29d9a.js",
+    "main.js": "/react-nickgenerator/static/js/main.20398e6f.js",
     "static/js/787.a4e090eb.chunk.js": "/react-nickgenerator/static/js/787.a4e090eb.chunk.js",
     "index.html": "/react-nickgenerator/index.html",
     "main.ca5141ee.css.map": "/react-nickgenerator/static/css/main.ca5141ee.css.map",
-    "main.7ea29d9a.js.map": "/react-nickgenerator/static/js/main.7ea29d9a.js.map",
+    "main.20398e6f.js.map": "/react-nickgenerator/static/js/main.20398e6f.js.map",
     "787.a4e090eb.chunk.js.map": "/react-nickgenerator/static/js/787.a4e090eb.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.ca5141ee.css",
-    "static/js/main.7ea29d9a.js"
+    "static/js/main.20398e6f.js"
   ]
 }
