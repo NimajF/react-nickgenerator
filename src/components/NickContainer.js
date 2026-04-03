@@ -1,10 +1,11 @@
 import { useContext, useState } from "react";
-import { nickContext } from "./contexts/nickContext";
+import { nickContext } from "../contexts/nickContext";
 import { Generator } from "./Generator";
 import "./NickContainer.css";
 
 export function NickContainer() {
-  const { nickname, setNickname, click, setClick, message } = useContext(nickContext);
+  const { nickname, setNickname, click, setClick, message } =
+    useContext(nickContext);
   const [userText, setUserText] = useState("");
   const [copy, setCopy] = useState(false);
 

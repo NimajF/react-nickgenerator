@@ -1,0 +1,284 @@
+.container {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* ── Card ──────────────────────────────────────────── */
+.nick-container {
+    height: 560px;
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2.5rem;
+    background: var(--card-bg);
+    border-radius: var(--radius-card);
+    border: 1px solid var(--card-border);
+    box-shadow: var(--card-box-shadow);
+    backdrop-filter: blur(var(--card-blur));
+    -webkit-backdrop-filter: blur(var(--card-blur));
+    position: relative;
+    overflow: hidden;
+    transition:
+        background 0.4s ease,
+        border-color 0.4s ease,
+        box-shadow 0.4s ease,
+        border-radius 0.4s ease,
+        backdrop-filter 0.4s ease;
+}
+
+.nick-container::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(circle at 96% 3%, var(--card-deco-1) 0%, transparent 32%),
+        radial-gradient(circle at 3% 97%, var(--card-deco-2) 0%, transparent 28%);
+    pointer-events: none;
+    transition: background 0.4s ease;
+}
+
+/* ── Nickname display ──────────────────────────────── */
+.nickname-div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 84%;
+    min-height: 88px;
+    background: var(--display-bg);
+    border: 1.5px solid var(--display-border);
+    letter-spacing: var(--display-letter-spacing);
+    font-size: 1.5rem;
+    text-align: center;
+    padding: 1.6rem 2rem;
+    border-radius: var(--radius-display);
+    color: var(--display-text);
+    box-shadow:
+        0 10px 32px var(--display-shadow),
+        0 2px 6px rgba(0, 0, 0, 0.08),
+        inset 0 1px 0 rgba(255, 255, 255, 0.15);
+    position: relative;
+    z-index: 1;
+    transition:
+        background 0.4s ease,
+        border-color 0.4s ease,
+        box-shadow 0.4s ease,
+        color 0.3s ease,
+        border-radius 0.4s ease,
+        letter-spacing 0.4s ease;
+}
+
+.nickname {
+    animation: fade-text 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    font-family: var(--font-display);
+    font-size: 2.6rem;
+    font-weight: var(--font-weight-display);
+    text-shadow: 0 1px 6px rgba(0, 0, 0, 0.15);
+    transition: font-family 0.3s ease, font-weight 0.3s ease;
+}
+
+@keyframes fade-text {
+    from { opacity: 0; transform: translateY(14px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Custom prefix input ───────────────────────────── */
+.provide-text {
+    position: relative;
+    z-index: 1;
+    transform: translateY(60px);
+    opacity: 0;
+    width: 280px;
+    padding: var(--input-padding);
+    background-color: var(--input-bg);
+    backdrop-filter: var(--input-backdrop);
+    -webkit-backdrop-filter: var(--input-backdrop);
+    border: none;
+    border-radius: var(--input-radius);
+    outline: none;
+    font-family: var(--font-ui);
+    font-size: 1.05rem;
+    color: var(--input-text);
+    text-align: var(--input-text-align);
+    box-shadow: var(--input-box-shadow);
+    transition: all 0.42s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.provide-text::placeholder {
+    color: var(--input-text);
+    opacity: 0.38;
+    font-style: italic;
+}
+
+.provide-text:focus {
+    background-color: var(--input-bg-focus);
+    box-shadow: var(--input-box-shadow-focus);
+}
+
+/* ── Provide button ────────────────────────────────── */
+.provide {
+    width: 160px;
+    padding: 0.85rem 1rem;
+    margin-top: -4rem;
+    font-size: 1.15rem;
+    font-family: var(--font-ui);
+    font-weight: var(--font-weight-btn);
+    border-radius: var(--radius-btn);
+    background: var(--provide-bg);
+    color: var(--btn-text, white);
+    box-shadow:
+        0 var(--btn-depth) 0 0 var(--provide-bottom),
+        0 12px 24px var(--provide-glow),
+        var(--btn-extra-shadow);
+    border: 1.5px solid var(--provide-border);
+    transition: all 0.12s ease-in-out;
+    margin-bottom: 0.1rem;
+    z-index: 1;
+    cursor: pointer;
+    letter-spacing: 0.5px;
+    position: relative;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+}
+
+.provide.clicked {
+    transform: translateY(var(--btn-depth));
+    box-shadow: 0 1px 0 0 var(--provide-bottom), 0 4px 10px var(--provide-glow);
+}
+
+.provide:hover {
+    background: var(--provide-bg-hover);
+}
+
+/* ── Copy button ───────────────────────────────────── */
+.copy-button {
+    background-color: transparent;
+    border: none;
+    color: var(--copy-color);
+    font-size: 0.88rem;
+    font-family: var(--font-ui);
+    font-weight: var(--font-weight-btn);
+    margin-bottom: 0.5rem;
+    z-index: 1;
+    cursor: pointer;
+    padding: 0.4rem 1.1rem;
+    border-radius: var(--radius-copy);
+    letter-spacing: 0.3px;
+    position: relative;
+    transition: color 0.3s ease, background-color 0.3s ease, transform 0.22s ease, border-radius 0.4s ease;
+}
+
+.copy-button:hover {
+    transform: translateY(-5px);
+    text-decoration: underline;
+    color: var(--copy-hover-color);
+    background-color: var(--copy-hover-bg);
+}
+
+.copy-button:disabled {
+    opacity: 0.28;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* ── Copied overlay ────────────────────────────────── */
+.overlay {
+    opacity: 0;
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: var(--font-ui);
+    color: var(--overlay-text);
+    background: var(--overlay-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: inherit;
+    z-index: 0;
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.28s ease;
+    transform: scale(0.86);
+}
+
+.overlay.show {
+    opacity: 1;
+    z-index: 5;
+    transform: scale(1);
+}
+
+.overlay h2 {
+    font-size: 3.4rem;
+    letter-spacing: 7px;
+    text-shadow: 0 2px 18px rgba(0, 0, 0, 0.16);
+    margin: 0;
+}
+
+.overlay .copied-nickname {
+    font-size: 2rem;
+    font-weight: lighter;
+    opacity: 0.9;
+    margin-top: 0.4rem;
+    font-family: var(--font-display);
+}
+
+.overlay.show h2 {
+    animation: message-animation1 2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.overlay.show .copied-nickname {
+    animation: message-animation2 2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes message-animation1 {
+    0%   { transform: translateY(-220px); opacity: 0; }
+    35%  { transform: translateY(0px);    opacity: 1; }
+    100% { transform: translateX(14px);   opacity: 1; }
+}
+
+@keyframes message-animation2 {
+    0%   { transform: translateY(220px);  opacity: 0; }
+    35%  { transform: translateY(0px);    opacity: 1; }
+    100% { transform: translateX(-14px);  opacity: 1; }
+}
+
+.overlay .message {
+    opacity: 0;
+    font-size: 1.1rem;
+    background-color: rgba(255, 255, 255, 0.1);
+    width: 72%;
+    border-radius: var(--radius-btn);
+    padding: 0.5rem 1.2rem;
+    transition: transform 0.4s ease-out 0.18s, opacity 0.36s ease 0.18s;
+    transform: scale(0.72);
+    text-align: center;
+    margin-top: 1.2rem;
+}
+
+.overlay.show .message {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* ── Responsive ────────────────────────────────────── */
+@media (max-width: 1400px) {
+    .nickname { font-size: 2rem; }
+}
+
+@media (max-width: 992px) {
+    .nickname { font-size: 1.4rem; font-weight: bold; }
+    .nickname-div { width: 80%; }
+    .provide-text { width: 65%; }
+    .overlay h2 { font-size: 2.2rem; }
+    .overlay .copied-nickname { font-size: 1.1rem; font-weight: bold; }
+}
+
+@media (max-width: 576px) {
+    .nick-container { width: 90%; height: 530px; gap: 2rem; }
+    .provide { width: 110px; font-size: 1rem; margin-bottom: -2rem; }
+    .copy-button { margin-top: -1rem; }
+    .provide-text { width: 72%; }
+}

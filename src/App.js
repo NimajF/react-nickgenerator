@@ -1,14 +1,12 @@
-import { Navbar } from './Navbar';
-import { NickContainer } from './NickContainer';
-import { NickProvider } from './contexts/nickContext';
-import './App.css';
+import { NickProvider } from "./contexts/nickContext";
+import AppContent from "./components/AppContent";
+import "./App.css";
 
 function App() {
   return (
     <div className="App">
       <NickProvider>
-        <Navbar/>
-        <NickContainer/>
+        <AppContent />
       </NickProvider>
     </div>
   );

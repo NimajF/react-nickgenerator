@@ -1,69 +1,94 @@
-.div-btns{
+.div-btns {
     display: flex;
     width: 100%;
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: center;
     align-items: center;
-    gap: 1rem;
-}
-
-.generate{
-    width: 150px;
-    padding: 1rem;
-    font-size: 1.5rem;
-    font-family: "Poppins";
-    border-radius: 5px;
-    border: 2px solid rgb(101, 151, 243);
-    background: rgb(78, 140, 255);
-    color: white;
-    box-shadow: 0 7px 0 0 rgb(37, 99, 216);
-    transition: .1s ease-in-out;
+    gap: 1.2rem;
+    position: relative;
     z-index: 1;
 }
-.generate:hover{
-    background: rgb(43, 116, 250);
+
+/* ── Generate ────────────────────────────────────────── */
+.generate {
+    width: 145px;
+    padding: 0.85rem 1rem;
+    font-size: 1.25rem;
+    font-family: "Poppins";
+    font-weight: 600;
+    border-radius: 10px;
+    border: 1.5px solid rgba(100, 160, 255, 0.35);
+    background: linear-gradient(135deg, rgb(85, 148, 255), rgb(55, 118, 252));
+    color: white;
+    letter-spacing: 0.4px;
+    box-shadow: 0 6px 0 0 rgb(28, 86, 210), 0 10px 24px rgba(55, 118, 252, 0.4);
+    transition: all 0.12s ease-in-out;
+    cursor: pointer;
 }
-.generate:active{
+
+.generate:hover {
+    background: linear-gradient(135deg, rgb(65, 128, 255), rgb(40, 102, 245));
+    box-shadow: 0 6px 0 0 rgb(20, 76, 200), 0 16px 32px rgba(55, 118, 252, 0.52);
+    transform: translateY(-1px);
+}
+
+.generate:active {
     transform: translateY(4px);
-    box-shadow: 0 2px 0 0 rgb(21, 82, 197);
+    box-shadow: 0 2px 0 0 rgb(16, 70, 194), 0 4px 12px rgba(55, 118, 252, 0.3);
 }
 
-.reset{
-    width: 150px;
-    padding: 1rem;
-    font-size: 1.5rem;
+/* ── Reset ───────────────────────────────────────────── */
+.reset {
+    width: 145px;
+    padding: 0.85rem 1rem;
+    font-size: 1.25rem;
     font-family: "Poppins";
-    border-radius: 5px;
-    border: 2px solid rgb(255, 81, 81);
-    background: rgb(255, 63, 63);
-    box-shadow: 0 7px 0 0 rgb(246, 22, 22);
+    font-weight: 600;
+    border-radius: 10px;
+    border: 1.5px solid rgba(255, 88, 88, 0.35);
+    background: linear-gradient(135deg, rgb(255, 70, 70), rgb(236, 40, 40));
+    box-shadow: 0 6px 0 0 rgb(192, 15, 15), 0 10px 24px rgba(236, 40, 40, 0.34);
     color: white;
-    transition: .3s ease-in-out;
-    z-index: 1;
+    letter-spacing: 0.4px;
+    transition: all 0.14s ease-in-out;
+    cursor: pointer;
 }
-.reset:hover{
-    background: rgb(248, 46, 46);
+
+.reset:hover {
+    background: linear-gradient(135deg, rgb(242, 52, 52), rgb(218, 25, 25));
     letter-spacing: 1px;
-}
-.reset:focus{
-    animation-name: reset-animation;
-    animation-duration: .3s;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 0 0 rgb(182, 10, 10), 0 16px 28px rgba(236, 40, 40, 0.44);
 }
 
-@keyframes reset-animation{
-    0% {transform: translateX(20px);}
-    25% {transform: translateX(-20px);}
-    50% {transform: translateX(10px);}
-    75% {transform: translateX(-10px);}
-    100% {transform: translateX(0px);}
+.reset:active {
+    transform: translateY(4px);
+    box-shadow: 0 2px 0 0 rgb(178, 8, 8), 0 4px 10px rgba(236, 40, 40, 0.28);
 }
 
-@media (max-width: 576px) { 
-    .generate{
-        width: 100px;
-        font-size: .9rem;
+.reset:focus {
+    animation: reset-animation 0.34s ease-out;
+}
+
+@keyframes reset-animation {
+    0%   { transform: translateX(0); }
+    16%  { transform: translateX(-18px); }
+    34%  { transform: translateX(18px); }
+    52%  { transform: translateX(-10px); }
+    70%  { transform: translateX(10px); }
+    84%  { transform: translateX(-4px); }
+    100% { transform: translateX(0); }
+}
+
+/* ── Mobile: revert to column ───────────────────────── */
+@media (max-width: 576px) {
+    .div-btns {
+        flex-direction: column;
+        gap: 0.85rem;
     }
-    .reset{
-        width: 100px;
-        font-size: 1rem;
+    .generate,
+    .reset {
+        width: 120px;
+        font-size: 0.95rem;
     }
 }

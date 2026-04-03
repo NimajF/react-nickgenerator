@@ -1,0 +1,104 @@
+.div-btns {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 1.2rem;
+    position: relative;
+    z-index: 1;
+}
+
+/* Generate button */
+.generate {
+    width: 145px;
+    padding: 0.85rem 1rem;
+    font-size: 1.15rem;
+    font-family: var(--font-ui);
+    font-weight: var(--font-weight-btn);
+    letter-spacing: 0.4px;
+    border-radius: var(--radius-btn);
+    border: 1.5px solid var(--generate-border);
+    background: var(--generate-bg);
+    color: var(--btn-text, white);
+    box-shadow:
+        0 var(--btn-depth) 0 0 var(--generate-bottom),
+        0 10px 24px var(--generate-glow),
+        var(--btn-extra-shadow);
+    transition: all 0.12s ease-in-out;
+    cursor: pointer;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.18);
+}
+
+.generate:hover {
+    background: var(--generate-bg-hover);
+    box-shadow:
+        0 var(--btn-depth) 0 0 var(--generate-bottom),
+        0 16px 32px var(--generate-glow-hover),
+        var(--btn-extra-shadow);
+    transform: translateY(-1px);
+}
+
+.generate:active {
+    transform: translateY(var(--btn-depth));
+    box-shadow:
+        0 1px 0 0 var(--generate-bottom),
+        0 4px 12px var(--generate-glow);
+}
+
+/* Reset button */
+.reset {
+    width: 145px;
+    padding: 0.85rem 1rem;
+    font-size: 1.15rem;
+    font-family: var(--font-ui);
+    font-weight: var(--font-weight-btn);
+    letter-spacing: 0.4px;
+    border-radius: var(--radius-btn);
+    border: 1.5px solid var(--reset-border);
+    background: var(--reset-bg);
+    color: var(--btn-text, white);
+    box-shadow:
+        0 var(--btn-depth) 0 0 var(--reset-bottom),
+        0 10px 24px var(--reset-glow),
+        var(--btn-extra-shadow);
+    transition: all 0.14s ease-in-out;
+    cursor: pointer;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.18);
+}
+
+.reset:hover {
+    background: var(--reset-bg-hover);
+    letter-spacing: 1px;
+    transform: translateY(-1px);
+    box-shadow:
+        0 var(--btn-depth) 0 0 var(--reset-bottom),
+        0 16px 28px var(--reset-glow-hover),
+        var(--btn-extra-shadow);
+}
+
+.reset:active {
+    transform: translateY(var(--btn-depth));
+    box-shadow:
+        0 1px 0 0 var(--reset-bottom),
+        0 4px 10px var(--reset-glow);
+}
+
+.reset:focus {
+    animation: reset-animation 0.34s ease-out;
+}
+
+@keyframes reset-animation {
+    0%   { transform: translateX(0); }
+    16%  { transform: translateX(-18px); }
+    34%  { transform: translateX(18px); }
+    52%  { transform: translateX(-10px); }
+    70%  { transform: translateX(10px); }
+    84%  { transform: translateX(-4px); }
+    100% { transform: translateX(0); }
+}
+
+@media (max-width: 576px) {
+    .div-btns { flex-direction: column; gap: 0.85rem; }
+    .generate, .reset { width: 120px; font-size: 0.95rem; }
+}

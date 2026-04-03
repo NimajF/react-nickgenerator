@@ -1,6 +1,489 @@
-.App{
+/* ─── Outer shell ─────────────────────────────────────── */
+.App {
   height: 100vh;
-  background: rgb(147,179,255);
-background: linear-gradient(215deg, rgba(147,179,255,1) 0%, rgba(202,218,255,1) 100%);
   overflow: hidden;
+}
+
+
+.app-content {
+  /* ── Fondo ── */
+  --app-bg: linear-gradient(145deg, #5e8fff 0%, #94baff 45%, #c2d9ff 100%);
+  --blob-1: rgba(255, 255, 255, 0.28);
+  --blob-2: rgba(90, 40, 255, 0.16);
+
+  /* ── Navbar ── */
+  --navbar-bg: rgba(255, 255, 255, 0.94);
+  --navbar-border: rgba(170, 200, 255, 0.55);
+  --navbar-shadow: rgba(100, 140, 255, 0.18);
+  --navbar-text: rgb(75, 75, 75);
+  --logo-bg: linear-gradient(135deg, rgb(188, 160, 255), rgb(115, 65, 255));
+  --logo-shadow: rgba(115, 65, 255, 0.28);
+  --logo-text: #ffffff;
+
+  /* ── Card ── */
+  --card-bg: rgba(255, 255, 255, 0.68);
+  --card-border: rgba(255, 255, 255, 0.72);
+  --card-shadow: rgba(70, 120, 255, 0.2);
+  --card-inset: rgba(255, 255, 255, 0.9);
+  --card-deco-1: rgba(160, 110, 255, 0.28);
+  --card-deco-2: rgba(70, 140, 255, 0.24);
+  --card-blur: 28px;
+
+  /* ── Nickname display ── */
+  --display-bg: linear-gradient(135deg, rgba(70, 140, 255, 0.95), rgba(100, 168, 255, 0.95));
+  --display-border: rgba(100, 165, 255, 0.4);
+  --display-shadow: rgba(70, 140, 255, 0.42);
+  --display-text: #ffffff;
+  --display-letter-spacing: 2px;
+
+  /* ── Input ── */
+  --input-bg: rgba(240, 243, 255, 0.9);
+  --input-bg-focus: rgba(248, 250, 255, 0.98);
+  --input-border: rgba(140, 180, 255, 0.8);
+  --input-border-focus: rgb(60, 125, 255);
+  --input-text: rgb(40, 40, 70);
+  --input-radius: 12px 12px 0 0;
+  --input-box-shadow: inset 0 -2.5px 0 0 var(--input-border);
+  --input-box-shadow-focus: inset 0 -3px 0 0 var(--input-border-focus), 0 6px 24px rgba(60, 125, 255, 0.13);
+  --input-text-align: center;
+  --input-padding: 0.9rem 1.4rem;
+  --input-backdrop: none;
+
+  /* ── Botón Provide ── */
+  --provide-bg: linear-gradient(135deg, rgb(155, 90, 255), rgb(118, 52, 250));
+  --provide-bg-hover: linear-gradient(135deg, rgb(140, 68, 255), rgb(105, 38, 240));
+  --provide-bottom: rgb(82, 5, 230);
+  --provide-glow: rgba(118, 52, 250, 0.4);
+  --provide-border: rgba(195, 158, 255, 0.35);
+
+  /* ── Botón Generate ── */
+  --generate-bg: linear-gradient(135deg, rgb(85, 148, 255), rgb(55, 118, 252));
+  --generate-bg-hover: linear-gradient(135deg, rgb(65, 128, 255), rgb(40, 102, 245));
+  --generate-bottom: rgb(28, 86, 210);
+  --generate-glow: rgba(55, 118, 252, 0.4);
+  --generate-glow-hover: rgba(55, 118, 252, 0.52);
+  --generate-border: rgba(100, 160, 255, 0.35);
+
+  /* ── Botón Reset ── */
+  --reset-bg: linear-gradient(135deg, rgb(255, 70, 70), rgb(236, 40, 40));
+  --reset-bg-hover: linear-gradient(135deg, rgb(242, 52, 52), rgb(218, 25, 25));
+  --reset-bottom: rgb(192, 15, 15);
+  --reset-glow: rgba(236, 40, 40, 0.34);
+  --reset-glow-hover: rgba(236, 40, 40, 0.44);
+  --reset-border: rgba(255, 88, 88, 0.35);
+
+  /* ── Copy button ── */
+  --copy-color: rgb(40, 115, 255);
+  --copy-hover-color: rgb(9, 67, 175);
+  --copy-hover-bg: rgba(40, 115, 255, 0.07);
+
+  /* ── Overlay ── */
+  --overlay-bg: linear-gradient(145deg, rgba(58, 130, 255, 0.97), rgba(88, 158, 255, 0.97));
+  --overlay-text: #ffffff;
+
+  /* ── Tipografía ── */
+  --font-ui: "Poppins";
+  --font-display: 'Rubik', sans-serif;
+  --font-weight-btn: 600;
+  --font-weight-display: 400;
+
+  /* ── Forma ── */
+  --radius-card: 28px;
+  --radius-btn: 10px;
+  --radius-display: 18px;
+  --radius-input-top: 10px;
+  --radius-copy: 20px;
+  --radius-theme-btn: 20px;
+
+  /* ── Profundidad ── */
+  --btn-depth: 6px;
+  --btn-text: #ffffff;
+  --btn-extra-shadow: 0 0 0 0 transparent;
+  --card-box-shadow: 0 8px 32px var(--card-shadow), 0 2px 8px rgba(0, 0, 0, 0.06), inset 0 1px 0 var(--card-inset);
+
+  /* ─── Estilos reales ─── */
+  height: 100%;
+  background: var(--app-bg);
+  position: relative;
+  transition: background 0.4s ease;
+}
+
+.app-content::before {
+  content: "";
+  position: absolute;
+  width: 900px;
+  height: 900px;
+  background: radial-gradient(circle, var(--blob-1) 0%, transparent 58%);
+  top: -280px;
+  right: -180px;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.app-content::after {
+  content: "";
+  position: absolute;
+  width: 700px;
+  height: 700px;
+  background: radial-gradient(circle, var(--blob-2) 0%, transparent 60%);
+  bottom: -200px;
+  left: -160px;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+/* ══════════════════════════════════════════════════════════
+   TEMA: Dracula — terminal, monospace, sharp, minimal
+══════════════════════════════════════════════════════════ */
+.app-content.dracula {
+  --app-bg: linear-gradient(145deg, #282a36 0%, #1a1b26 100%);
+  --blob-1: rgba(189, 147, 249, 0.1);
+  --blob-2: rgba(255, 121, 198, 0.08);
+
+  --navbar-bg: rgba(24, 25, 34, 0.98);
+  --navbar-border: rgba(98, 114, 164, 0.4);
+  --navbar-shadow: rgba(0, 0, 0, 0.5);
+  --navbar-text: #6272a4;
+  --logo-bg: linear-gradient(135deg, #44475a, #282a36);
+  --logo-shadow: rgba(0, 0, 0, 0.5);
+  --logo-text: #bd93f9;
+
+  --card-bg: rgba(40, 42, 54, 0.96);
+  --card-border: rgba(98, 114, 164, 0.35);
+  --card-shadow: rgba(0, 0, 0, 0.5);
+  --card-inset: rgba(98, 114, 164, 0.1);
+  --card-deco-1: rgba(189, 147, 249, 0.06);
+  --card-deco-2: rgba(80, 250, 123, 0.05);
+  --card-blur: 0px;
+
+  --display-bg: linear-gradient(135deg, #282a36, #1e1f29);
+  --display-border: rgba(189, 147, 249, 0.5);
+  --display-shadow: rgba(0, 0, 0, 0.5);
+  --display-text: #50fa7b;
+  --display-letter-spacing: 4px;
+
+  --input-bg: rgba(24, 25, 34, 0.95);
+  --input-bg-focus: rgba(18, 19, 28, 1);
+  --input-border: #50fa7b;
+  --input-border-focus: #50fa7b;
+  --input-text: #50fa7b;
+  --input-radius: 0;
+  --input-box-shadow: inset 4px 0 0 0 #50fa7b;
+  --input-box-shadow-focus: inset 4px 0 0 0 #50fa7b, 0 0 0 1px rgba(80, 250, 123, 0.18), inset 0 0 16px rgba(80, 250, 123, 0.06);
+  --input-text-align: left;
+  --input-padding: 0.85rem 1.2rem 0.85rem 2rem;
+  --input-backdrop: none;
+
+  --provide-bg: linear-gradient(135deg, #44475a, #383a4a);
+  --provide-bg-hover: linear-gradient(135deg, #50536a, #44475a);
+  --provide-bottom: #1e1f29;
+  --provide-glow: transparent;
+  --provide-border: rgba(189, 147, 249, 0.4);
+
+  --generate-bg: linear-gradient(135deg, #50fa7b, #3ddb69);
+  --generate-bg-hover: linear-gradient(135deg, #3ddb69, #2ec558);
+  --generate-bottom: #1a8c3a;
+  --generate-glow: transparent;
+  --generate-glow-hover: transparent;
+  --generate-border: rgba(80, 250, 123, 0.3);
+
+  --reset-bg: linear-gradient(135deg, #ff79c6, #e866b0);
+  --reset-bg-hover: linear-gradient(135deg, #e866b0, #d4559d);
+  --reset-bottom: #8c2d68;
+  --reset-glow: transparent;
+  --reset-glow-hover: transparent;
+  --reset-border: rgba(255, 121, 198, 0.3);
+
+  --copy-color: #6272a4;
+  --copy-hover-color: #bd93f9;
+  --copy-hover-bg: rgba(98, 114, 164, 0.1);
+
+  --overlay-bg: linear-gradient(145deg, rgba(24, 25, 34, 0.98), rgba(40, 42, 54, 0.98));
+  --overlay-text: #50fa7b;
+
+  /* Tipografía — monospace total */
+  --font-ui: "Roboto Mono";
+  --font-display: "Roboto Mono", monospace;
+  --font-weight-btn: 400;
+  --font-weight-display: 400;
+
+  /* Forma — sharp, sin redondeo */
+  --radius-card: 6px;
+  --radius-btn: 3px;
+  --radius-display: 3px;
+  --radius-input-top: 3px;
+  --radius-copy: 3px;
+  --radius-theme-btn: 3px;
+
+  /* Sin profundidad exagerada */
+  --btn-depth: 4px;
+  --btn-text: #ffffff;
+  --btn-extra-shadow: 0 0 0 0 transparent;
+  --card-box-shadow: 0 0 0 1px rgba(98, 114, 164, 0.3), 0 4px 24px rgba(0, 0, 0, 0.5);
+}
+
+/* ══════════════════════════════════════════════════════════
+   TEMA: Glass — pill shapes, ultra-soft, aéreo
+══════════════════════════════════════════════════════════ */
+.app-content.glass {
+  --app-bg: linear-gradient(145deg, #a855f7 0%, #ec4899 55%, #f97316 100%);
+  --blob-1: rgba(255, 255, 255, 0.4);
+  --blob-2: rgba(255, 80, 180, 0.18);
+
+  --navbar-bg: rgba(255, 255, 255, 0.14);
+  --navbar-border: rgba(255, 255, 255, 0.25);
+  --navbar-shadow: rgba(0, 0, 0, 0.06);
+  --navbar-text: rgba(255, 255, 255, 0.9);
+  --logo-bg: linear-gradient(135deg, rgba(255, 255, 255, 0.28), rgba(255, 255, 255, 0.12));
+  --logo-shadow: rgba(0, 0, 0, 0.1);
+  --logo-text: #ffffff;
+
+  --card-bg: rgba(255, 255, 255, 0.13);
+  --card-border: rgba(255, 255, 255, 0.35);
+  --card-shadow: rgba(0, 0, 0, 0.08);
+  --card-inset: rgba(255, 255, 255, 0.55);
+  --card-deco-1: rgba(255, 255, 255, 0.12);
+  --card-deco-2: rgba(255, 255, 255, 0.08);
+  --card-blur: 40px;
+
+  --display-bg: linear-gradient(135deg, rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0.1));
+  --display-border: rgba(255, 255, 255, 0.4);
+  --display-shadow: rgba(0, 0, 0, 0.08);
+  --display-text: #ffffff;
+  --display-letter-spacing: 3px;
+
+  --input-bg: rgba(255, 255, 255, 0.12);
+  --input-bg-focus: rgba(255, 255, 255, 0.22);
+  --input-border: rgba(255, 255, 255, 0.38);
+  --input-border-focus: rgba(255, 255, 255, 0.9);
+  --input-text: #ffffff;
+  --input-radius: 50px;
+  --input-box-shadow: 0 0 0 1.5px rgba(255, 255, 255, 0.32);
+  --input-box-shadow-focus: 0 0 0 2.5px rgba(255, 255, 255, 0.88), 0 0 32px rgba(255, 255, 255, 0.2);
+  --input-text-align: center;
+  --input-padding: 0.9rem 2rem;
+  --input-backdrop: blur(14px);
+
+  --provide-bg: linear-gradient(135deg, rgba(168, 85, 247, 0.6), rgba(139, 52, 220, 0.5));
+  --provide-bg-hover: linear-gradient(135deg, rgba(168, 85, 247, 0.78), rgba(139, 52, 220, 0.68));
+  --provide-bottom: rgba(100, 20, 185, 0.4);
+  --provide-glow: rgba(168, 85, 247, 0.2);
+  --provide-border: rgba(255, 255, 255, 0.3);
+
+  --generate-bg: linear-gradient(135deg, rgba(59, 130, 246, 0.6), rgba(37, 99, 235, 0.5));
+  --generate-bg-hover: linear-gradient(135deg, rgba(59, 130, 246, 0.78), rgba(37, 99, 235, 0.68));
+  --generate-bottom: rgba(20, 60, 185, 0.4);
+  --generate-glow: rgba(59, 130, 246, 0.18);
+  --generate-glow-hover: rgba(59, 130, 246, 0.3);
+  --generate-border: rgba(255, 255, 255, 0.28);
+
+  --reset-bg: linear-gradient(135deg, rgba(239, 68, 68, 0.6), rgba(220, 38, 38, 0.5));
+  --reset-bg-hover: linear-gradient(135deg, rgba(239, 68, 68, 0.78), rgba(220, 38, 38, 0.68));
+  --reset-bottom: rgba(160, 15, 15, 0.4);
+  --reset-glow: rgba(239, 68, 68, 0.18);
+  --reset-glow-hover: rgba(239, 68, 68, 0.3);
+  --reset-border: rgba(255, 255, 255, 0.28);
+
+  --copy-color: rgba(255, 255, 255, 0.85);
+  --copy-hover-color: #ffffff;
+  --copy-hover-bg: rgba(255, 255, 255, 0.12);
+
+  --overlay-bg: linear-gradient(145deg, rgba(168, 85, 247, 0.9), rgba(236, 72, 153, 0.9));
+  --overlay-text: #ffffff;
+
+  /* Tipografía — ligero y elegante */
+  --font-ui: "Poppins";
+  --font-display: 'Rubik', sans-serif;
+  --font-weight-btn: 300;
+  --font-weight-display: 300;
+
+  /* Forma — pill shapes, muy redondeado */
+  --radius-card: 36px;
+  --radius-btn: 50px;
+  --radius-display: 28px;
+  --radius-input-top: 16px;
+  --radius-copy: 50px;
+  --radius-theme-btn: 50px;
+
+  /* Sombras suaves */
+  --btn-depth: 3px;
+  --btn-text: #ffffff;
+  --btn-extra-shadow: 0 0 0 0 transparent;
+  --card-box-shadow: 0 8px 40px var(--card-shadow), 0 2px 6px rgba(0, 0, 0, 0.05), inset 0 1px 0 var(--card-inset);
+}
+
+/* ══════════════════════════════════════════════════════════
+   TEMA: Terminal — Windows CMD, verde fosforescente, raw
+══════════════════════════════════════════════════════════ */
+.app-content.terminal {
+  --app-bg: #0c0c0c;
+  --blob-1: rgba(0, 255, 0, 0.03);
+  --blob-2: rgba(0, 180, 0, 0.02);
+
+  --navbar-bg: #0c0c0c;
+  --navbar-border: rgba(0, 255, 0, 0.2);
+  --navbar-shadow: rgba(0, 0, 0, 0.9);
+  --navbar-text: #aaaaaa;
+  --logo-bg: #000000;
+  --logo-shadow: rgba(0, 255, 0, 0.1);
+  --logo-text: #00ff00;
+
+  --card-bg: rgba(8, 10, 8, 0.99);
+  --card-border: rgba(0, 255, 0, 0.25);
+  --card-shadow: rgba(0, 0, 0, 0.95);
+  --card-inset: rgba(0, 255, 0, 0.03);
+  --card-deco-1: rgba(0, 255, 0, 0.03);
+  --card-deco-2: rgba(0, 255, 0, 0.02);
+  --card-blur: 0px;
+  --card-box-shadow: 0 0 0 1px rgba(0, 255, 0, 0.2), 0 0 40px rgba(0, 255, 0, 0.04);
+
+  --display-bg: #000000;
+  --display-border: rgba(0, 255, 0, 0.4);
+  --display-shadow: rgba(0, 255, 0, 0.12);
+  --display-text: #00ff00;
+  --display-letter-spacing: 4px;
+
+  --input-bg: #000000;
+  --input-bg-focus: #000000;
+  --input-border: rgba(0, 255, 0, 0.5);
+  --input-border-focus: #00ff00;
+  --input-text: #00ff00;
+  --input-radius: 0;
+  --input-box-shadow: inset 0 -1px 0 0 rgba(0, 255, 0, 0.4);
+  --input-box-shadow-focus: inset 0 -1.5px 0 0 #00ff00, 0 4px 20px rgba(0, 255, 0, 0.1);
+  --input-text-align: left;
+  --input-padding: 0.75rem 1rem 0.75rem 1.5rem;
+  --input-backdrop: none;
+
+  --provide-bg: linear-gradient(180deg, #1a2a1a, #101a10);
+  --provide-bg-hover: linear-gradient(180deg, #243524, #1a2a1a);
+  --provide-bottom: #000000;
+  --provide-glow: transparent;
+  --provide-border: rgba(0, 255, 0, 0.4);
+
+  --generate-bg: linear-gradient(180deg, #0d2a0d, #071507);
+  --generate-bg-hover: linear-gradient(180deg, #163516, #0d2a0d);
+  --generate-bottom: #000000;
+  --generate-glow: transparent;
+  --generate-glow-hover: transparent;
+  --generate-border: rgba(0, 255, 0, 0.4);
+
+  --reset-bg: linear-gradient(180deg, #2a0d0d, #180606);
+  --reset-bg-hover: linear-gradient(180deg, #381515, #2a0d0d);
+  --reset-bottom: #000000;
+  --reset-glow: transparent;
+  --reset-glow-hover: transparent;
+  --reset-border: rgba(255, 85, 85, 0.4);
+
+  --copy-color: rgba(0, 255, 0, 0.6);
+  --copy-hover-color: #00ff00;
+  --copy-hover-bg: rgba(0, 255, 0, 0.05);
+
+  --overlay-bg: linear-gradient(145deg, rgba(0, 0, 0, 0.98), rgba(8, 10, 8, 0.98));
+  --overlay-text: #00ff00;
+
+  --btn-text: #00ff00;
+  --btn-extra-shadow: 0 0 0 0 transparent;
+
+  --font-ui: "Courier New", Consolas, "Roboto Mono", monospace;
+  --font-display: "Courier New", Consolas, "Roboto Mono", monospace;
+  --font-weight-btn: 400;
+  --font-weight-display: 400;
+
+  --radius-card: 0;
+  --radius-btn: 0;
+  --radius-display: 0;
+  --radius-input-top: 0;
+  --radius-copy: 0;
+  --radius-theme-btn: 0;
+
+  --btn-depth: 2px;
+}
+
+/* ══════════════════════════════════════════════════════════
+   TEMA: Old School Internet — Windows 98, foros retro, web 1.0
+══════════════════════════════════════════════════════════ */
+.app-content.old-internet-theme {
+  --app-bg: #008080;
+  --blob-1: rgba(0, 0, 128, 0.06);
+  --blob-2: rgba(192, 192, 192, 0.1);
+
+  --navbar-bg: linear-gradient(180deg, #0a0a9e, #000080);
+  --navbar-border: #000060;
+  --navbar-shadow: rgba(0, 0, 0, 0.6);
+  --navbar-text: #ffffff;
+  --logo-bg: transparent;
+  --logo-shadow: transparent;
+  --logo-text: #ffff00;
+
+  --card-bg: #d4d0c8;
+  --card-border: #ffffff;
+  --card-shadow: rgba(0, 0, 0, 0.35);
+  --card-inset: #ffffff;
+  --card-deco-1: transparent;
+  --card-deco-2: transparent;
+  --card-blur: 0px;
+  --card-box-shadow: inset -2px -2px 0 0 #808080, inset 2px 2px 0 0 #ffffff, 4px 4px 0 0 rgba(0,0,0,0.25);
+
+  --display-bg: linear-gradient(180deg, #000080, #0000aa);
+  --display-border: #c0c0c0;
+  --display-shadow: rgba(0, 0, 0, 0.5);
+  --display-text: #ffff00;
+  --display-letter-spacing: 1px;
+
+  --input-bg: #ffffff;
+  --input-bg-focus: #fffef5;
+  --input-border: #808080;
+  --input-border-focus: #000080;
+  --input-text: #000000;
+  --input-radius: 0;
+  --input-box-shadow: inset 2px 2px 0 0 #808080, inset -1px -1px 0 0 #ffffff;
+  --input-box-shadow-focus: inset 2px 2px 0 0 #000080, inset -1px -1px 0 0 #d0d0d0;
+  --input-text-align: left;
+  --input-padding: 0.4rem 0.6rem;
+  --input-backdrop: none;
+
+  --provide-bg: linear-gradient(180deg, #ece9d8, #d4d0c8);
+  --provide-bg-hover: linear-gradient(180deg, #d8d4c4, #c0bcac);
+  --provide-bottom: #a0a0a0;
+  --provide-glow: transparent;
+  --provide-border: #808080;
+
+  --generate-bg: linear-gradient(180deg, #ece9d8, #d4d0c8);
+  --generate-bg-hover: linear-gradient(180deg, #d8d4c4, #c0bcac);
+  --generate-bottom: #808080;
+  --generate-glow: transparent;
+  --generate-glow-hover: transparent;
+  --generate-border: #808080;
+
+  --reset-bg: linear-gradient(180deg, #ece9d8, #d4d0c8);
+  --reset-bg-hover: linear-gradient(180deg, #d8d4c4, #c0bcac);
+  --reset-bottom: #808080;
+  --reset-glow: transparent;
+  --reset-glow-hover: transparent;
+  --reset-border: #808080;
+
+  --copy-color: #0000cc;
+  --copy-hover-color: #cc0000;
+  --copy-hover-bg: transparent;
+
+  --overlay-bg: linear-gradient(145deg, #000080, #0000aa);
+  --overlay-text: #ffffff;
+
+  --btn-text: #000000;
+  --btn-extra-shadow: inset -2px -2px 0 0 #707070, inset 2px 2px 0 0 #f0f0f0;
+
+  --font-ui: Arial, "Helvetica Neue", sans-serif;
+  --font-display: "Times New Roman", Times, serif;
+  --font-weight-btn: 400;
+  --font-weight-display: 700;
+
+  --radius-card: 0;
+  --radius-btn: 0;
+  --radius-display: 0;
+  --radius-input-top: 0;
+  --radius-copy: 0;
+  --radius-theme-btn: 0;
+
+  --btn-depth: 2px;
 }

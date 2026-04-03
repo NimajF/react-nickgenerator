@@ -1,4 +1,4 @@
-.container{
+.container {
     height: 100vh;
     width: 100%;
     display: flex;
@@ -6,232 +6,277 @@
     align-items: center;
 }
 
-.provide{
-    width: 150px;
-    padding: 1rem;
-    margin-top: -4rem;
+/* ── Card ─────────────────────────────────────────────── */
+.nick-container {
+    height: 560px;
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2.5rem;
+    background: rgba(255, 255, 255, 0.68);
+    backdrop-filter: blur(28px);
+    -webkit-backdrop-filter: blur(28px);
+    border-radius: 28px;
+    border: 1px solid rgba(255, 255, 255, 0.72);
+    box-shadow:
+        0 8px 32px rgba(70, 120, 255, 0.2),
+        0 2px 8px rgba(0, 0, 0, 0.06),
+        inset 0 1px 0 rgba(255, 255, 255, 0.9);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Corner glow decorations */
+.nick-container::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(circle at 96% 3%, rgba(160, 110, 255, 0.28) 0%, transparent 32%),
+        radial-gradient(circle at 3% 97%, rgba(70, 140, 255, 0.24) 0%, transparent 28%);
+    pointer-events: none;
+}
+
+/* ── Nickname display ─────────────────────────────────── */
+.nickname-div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 84%;
+    min-height: 88px;
+    background: linear-gradient(135deg, rgba(70, 140, 255, 0.95), rgba(100, 168, 255, 0.95));
+    border: 1.5px solid rgba(100, 165, 255, 0.4);
+    letter-spacing: 2px;
     font-size: 1.5rem;
-    font-family: "Poppins";
-    border-radius: 5px;
-    background-color: rgb(134, 70, 253);
+    text-align: center;
+    padding: 1.6rem 2rem;
+    border-radius: 18px;
     color: rgb(255, 255, 255);
-    box-shadow: 0 7px 0 0 rgb(100, 16, 255);
-    border: 2px solid rgb(162, 113, 253);
-    transition: .1s ease-in-out; 
-    margin-bottom: .1rem;
+    box-shadow:
+        0 10px 32px rgba(70, 140, 255, 0.42),
+        0 2px 6px rgba(0, 0, 0, 0.08),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    position: relative;
     z-index: 1;
 }
-.provide.clicked{
-    transform: translateY(4px);
-    box-shadow: 0 2px 0 0 rgb(100, 16, 255);
-}
-.provide:hover{
-    color: rgb(246, 246, 246);
-    background-color: rgb(122, 51, 255);
-}
 
-.nick-container{
-    height: 600px;
-    width: 40%;
-    flex-direction: column;
-    gap: 3rem;
-    background-color: rgb(250, 250, 250);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 7px;
-    box-shadow: 0 1px 1px 0 rgb(0 0 0 / 10%);
-}
-
-.nickname-div{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 70%;
-    height: 30px;
-    background: rgb(106, 158, 255);
-    border: 3px solid rgb(83, 143, 255);
-    font-family: "Helvetica";
-    font-weight: lighter;
-    letter-spacing: 1px;
-    font-size: 2rem;
-    text-align: center;
-    padding: 1.2rem;
-    border-radius: 10px;
-    color: rgb(255, 255, 255);
-    
-}
-.nickname{
-    animation: fade-text .1s ease-in forwards;
+.nickname {
+    animation: fade-text 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     font-family: 'Rubik', sans-serif;
+    font-size: 2.6rem;
+    font-weight: 400;
 }
-@keyframes fade-text{
+
+@keyframes fade-text {
     from {
         opacity: 0;
+        transform: translateY(14px);
     }
     to {
         opacity: 1;
+        transform: translateY(0);
     }
 }
 
-.provide-text{
+/* ── Custom prefix input ─────────────────────────────── */
+.provide-text {
     position: relative;
+    z-index: 1;
     transform: translateY(60px);
-    background-color: rgb(235, 235, 235);
     opacity: 0;
-    padding: 1rem;
-    border-top-left-radius: 5px; border-top-right-radius: 5px;
+    width: 280px;
+    padding: 0.85rem 1.2rem;
+    background-color: rgba(232, 236, 252, 0.85);
     border: none;
-    border-bottom: 2px solid rgb(129, 173, 255);
+    border-bottom: 2.5px solid rgb(155, 190, 255);
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
     outline: none;
     font-family: 'Rubik', sans-serif;
-    font-size: 1.2rem;
-    color: rgb(58, 58, 58);
+    font-size: 1.1rem;
+    color: rgb(45, 45, 70);
     text-align: center;
-    transition: all .4s ease-in;
-    z-index: 0;
-}
-.provide-text:focus{
-    border-bottom: 2px solid rgb(57, 126, 253);
-    background-color: rgb(243, 243, 243);
+    transition: all 0.42s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.copy-button{
+.provide-text:focus {
+    border-bottom-color: rgb(60, 125, 255);
+    background-color: rgba(245, 247, 255, 0.95);
+}
+
+/* ── Provide button ───────────────────────────────────── */
+.provide {
+    width: 160px;
+    padding: 0.85rem 1rem;
+    margin-top: -4rem;
+    font-size: 1.25rem;
+    font-family: "Poppins";
+    border-radius: 10px;
+    background: linear-gradient(135deg, rgb(155, 90, 255), rgb(118, 52, 250));
+    color: #fff;
+    box-shadow: 0 6px 0 0 rgb(82, 5, 230), 0 12px 24px rgba(118, 52, 250, 0.4);
+    border: 1.5px solid rgba(195, 158, 255, 0.35);
+    transition: all 0.12s ease-in-out;
+    margin-bottom: 0.1rem;
+    z-index: 1;
+    cursor: pointer;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    position: relative;
+}
+
+.provide.clicked {
+    transform: translateY(4px);
+    box-shadow: 0 2px 0 0 rgb(82, 5, 230), 0 4px 10px rgba(118, 52, 250, 0.3);
+}
+
+.provide:hover {
+    background: linear-gradient(135deg, rgb(140, 68, 255), rgb(105, 38, 240));
+}
+
+/* ── Copy button ─────────────────────────────────────── */
+.copy-button {
     background-color: transparent;
     border: none;
-    transition: .2s ease-in-out;
-    color: rgb(35, 112, 255);
-    font-size: 1rem;
+    transition: all 0.22s ease;
+    color: rgb(40, 115, 255);
+    font-size: 0.92rem;
     font-family: "Roboto Mono";
     font-weight: 400;
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
     z-index: 1;
+    cursor: pointer;
+    padding: 0.4rem 1.1rem;
+    border-radius: 20px;
+    letter-spacing: 0.3px;
+    position: relative;
 }
-.copy-button:hover{
+
+.copy-button:hover {
     transform: translateY(-5px);
     text-decoration: underline;
     color: rgb(9, 67, 175);
+    background-color: rgba(40, 115, 255, 0.07);
 }
 
-.overlay{
+.copy-button:disabled {
+    opacity: 0.28;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* ── Copied overlay ─────────────────────────────────── */
+.overlay {
     opacity: 0;
     position: absolute;
-    height: 600px;
-    width: 40%;
+    inset: 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     font-family: "Roboto Mono";
-    color: rgb(255, 255, 255);
-    background: rgb(94, 147, 255);
-    backdrop-filter: blur(4px);
-    border-radius: 7px;
+    color: #fff;
+    background: linear-gradient(145deg, rgba(58, 130, 255, 0.97), rgba(88, 158, 255, 0.97));
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: inherit;
     z-index: 0;
-    transition: transform .3s ease-in-out;
-    transform: scale(0.1);
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.28s ease;
+    transform: scale(0.86);
 }
-/* .overlay::before{
-    content: "";
-    position: absolute;
-    background: #383736;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    top: 100%;
-    z-index: -1;
-    transition: top 0.09s ease-in;
-} */
 
-.overlay.show{
+.overlay.show {
     opacity: 1;
-    z-index: 2;
-    height: 600px;
+    z-index: 5;
     transform: scale(1);
-} 
+}
 
 .overlay h2 {
-    font-size: 3rem;
+    font-size: 3.4rem;
+    letter-spacing: 7px;
+    text-shadow: 0 2px 18px rgba(0, 0, 0, 0.16);
+    margin: 0;
 }
+
 .overlay .copied-nickname {
     font-size: 2rem;
     font-weight: lighter;
-}
-.overlay.show h2{
-    transform: translateY(20px);
-    animation: message-animation1 2s ease-in forwards;
-}
-.overlay.show .copied-nickname{
-    transform: translateY(20px);
-    animation: message-animation2 2s ease-in forwards;
-}
-@keyframes message-animation1{
-    0% {transform: translateY(-300px);}
-    25% {transform: translateY(0px);}
-    100% {transform: translateX(15px);}
-}
-@keyframes message-animation2{
-    0% {transform: translateY(300px);}
-    25% {transform: translateY(0px);}
-    100% {transform: translateX(-15px);}
+    opacity: 0.9;
+    margin-top: 0.4rem;
 }
 
-.overlay .message{
+.overlay.show h2 {
+    transform: translateY(20px);
+    animation: message-animation1 2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.overlay.show .copied-nickname {
+    transform: translateY(20px);
+    animation: message-animation2 2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes message-animation1 {
+    0%   { transform: translateY(-220px); opacity: 0; }
+    35%  { transform: translateY(0px);   opacity: 1; }
+    100% { transform: translateX(14px);  opacity: 1; }
+}
+
+@keyframes message-animation2 {
+    0%   { transform: translateY(220px);  opacity: 0; }
+    35%  { transform: translateY(0px);    opacity: 1; }
+    100% { transform: translateX(-14px);  opacity: 1; }
+}
+
+.overlay .message {
     opacity: 0;
-    font-size: 1.5rem;
-    background-color: rgba(255, 255, 255, 0.10);
-    width: 100%;
-    transition: transform .3s ease-in-out;
-    transform: scale(0.1);
+    font-size: 1.25rem;
+    background-color: rgba(255, 255, 255, 0.14);
+    width: 72%;
+    border-radius: 12px;
+    padding: 0.5rem 1.2rem;
+    transition: transform 0.4s ease-out 0.18s, opacity 0.36s ease 0.18s;
+    transform: scale(0.72);
     text-align: center;
-    margin-top: 1rem;
-
+    margin-top: 1.2rem;
 }
 
-.overlay.show .message{
+.overlay.show .message {
     opacity: 1;
     transform: scale(1);
 }
 
-@media (max-width: 1400px) { 
-    .nickname{
-        font-size: 1.5rem;
-    }
- }
-@media (max-width: 992px) { 
-    .nickname{
-        font-size: 1rem;
+/* ── Responsive ─────────────────────────────────────── */
+@media (max-width: 1400px) {
+    .nickname { font-size: 2rem; }
+}
+
+@media (max-width: 992px) {
+    .nickname {
+        font-size: 1.4rem;
         font-weight: bold;
     }
-    .nickname-div{
-        width: 200px;
-    }
-    .provide-text{
-        width: 60%;
-    }
-    .overlay h2 {
-        font-size: 2rem;
-    }
+    .nickname-div { width: 80%; }
+    .provide-text { width: 65%; }
+    .overlay h2 { font-size: 2.2rem; }
     .overlay .copied-nickname {
-        font-size: 1rem;
+        font-size: 1.1rem;
         font-weight: bold;
     }
 }
+
 @media (max-width: 576px) {
-    .nick-container{
-        width: 80%;
-        height: 500px;
-    } 
-    .provide{
-        width: 100px;
+    .nick-container {
+        width: 90%;
+        height: 530px;
+        gap: 2rem;
+    }
+    .provide {
+        width: 110px;
         font-size: 1rem;
         margin-bottom: -2rem;
     }
-    .copy-button{
-        margin-top: -1rem;
-    }
-    .overlay.show{
-        width: 80%;
-        height: 500px;
-    }
+    .copy-button { margin-top: -1rem; }
+    .provide-text { width: 72%; }
 }

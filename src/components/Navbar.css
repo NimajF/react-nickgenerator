@@ -1,0 +1,183 @@
+.navbar {
+    width: 100%;
+    height: 28px;
+    padding: 0.6rem 1.5rem;
+    background: var(--navbar-bg);
+    color: var(--navbar-text);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--navbar-border);
+    box-shadow: 0 2px 24px var(--navbar-shadow);
+    box-sizing: content-box;
+    position: relative;
+    z-index: 10;
+    transition:
+        background 0.4s ease,
+        border-color 0.4s ease,
+        box-shadow 0.4s ease,
+        color 0.3s ease;
+}
+
+.nav-logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--logo-bg);
+    font-family: var(--font-ui);
+    font-size: .9rem;
+    text-transform: uppercase;
+    height: 100%;
+    padding: 0.6rem 1.5rem;
+    margin-left: -1.5rem;
+    border-radius: 0 var(--radius-btn) var(--radius-btn) 0;
+    box-shadow: 4px 0 20px var(--logo-shadow);
+    transition:
+        background 0.4s ease,
+        box-shadow 0.4s ease,
+        border-radius 0.4s ease;
+}
+
+.nav-title {
+    font-weight: 300;
+    color: var(--logo-text);
+    letter-spacing: 2px;
+    margin: 0;
+    transition: color 0.3s ease;
+}
+
+.dice-emoji {
+    margin-left: 0.9rem;
+    font-size: 1.6rem;
+    display: inline-block;
+    animation: dice-roll 5s ease-in-out infinite;
+    filter: drop-shadow(0 1px 4px rgba(0, 0, 0, 0.18));
+}
+
+@keyframes dice-roll {
+    0%, 62%  { transform: rotate(0deg) scale(1); }
+    67%      { transform: rotate(-14deg) scale(1.06); }
+    79%      { transform: rotate(374deg) scale(1.2); }
+    86%      { transform: rotate(350deg) scale(1.1); }
+    93%      { transform: rotate(364deg) scale(1.04); }
+    100%     { transform: rotate(360deg) scale(1); }
+}
+
+/* Nav controls wrapper */
+.nav-controls {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+/* Language switcher */
+.lang-switcher {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+}
+
+.lang-label {
+    font-size: 0.9rem;
+    opacity: 0.7;
+    user-select: none;
+}
+
+.lang-btn {
+    appearance: none;
+    padding: 0.3rem 0.8rem;
+    border: 1.5px solid var(--navbar-border);
+    border-radius: var(--radius-theme-btn);
+    background: transparent;
+    color: var(--navbar-text);
+    font-family: var(--font-ui);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    cursor: pointer;
+    outline: none;
+    transition: all 0.22s ease, border-radius 0.4s ease;
+}
+
+.lang-btn:hover,
+.lang-btn:focus {
+    background: var(--logo-bg);
+    color: var(--logo-text);
+    border-color: transparent;
+    box-shadow: 0 2px 10px var(--logo-shadow);
+}
+
+/* Theme switcher */
+.theme-switcher {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    position: relative;
+    margin-right: 0.25rem;
+}
+
+.theme-label {
+    font-family: var(--font-ui);
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--navbar-text);
+    opacity: 0.55;
+    cursor: pointer;
+    transition: color 0.3s ease, opacity 0.3s ease;
+    user-select: none;
+}
+
+.theme-switcher::after {
+    content: "▾";
+    position: absolute;
+    right: 0.65rem;
+    color: var(--navbar-text);
+    font-size: 0.7rem;
+    pointer-events: none;
+    transition: color 0.3s ease;
+}
+
+.theme-select {
+    appearance: none;
+    -webkit-appearance: none;
+    padding: 0.3rem 1.8rem 0.3rem 0.8rem;
+    border: 1.5px solid var(--navbar-border);
+    border-radius: var(--radius-theme-btn);
+    background: transparent;
+    color: var(--navbar-text);
+    font-family: var(--font-ui);
+    font-size: 0.72rem;
+    font-weight: 500;
+    cursor: pointer;
+    outline: none;
+    transition: all 0.22s ease, border-radius 0.4s ease;
+}
+
+.theme-select:hover,
+.theme-select:focus {
+    background: var(--logo-bg);
+    color: var(--logo-text);
+    border-color: transparent;
+    box-shadow: 0 2px 10px var(--logo-shadow);
+}
+
+.theme-select option {
+    background: #1e1e2e;
+    color: #cdd6f4;
+    font-family: var(--font-ui);
+}
+
+@media (max-width: 1200px) {
+    .nav-logo { width: 35%; }
+}
+
+@media (max-width: 576px) {
+    .nav-logo {
+        width: 100%;
+        border-radius: 0;
+        margin-left: -1.5rem;
+    }
+    .theme-select { font-size: 0.65rem; }
+}
